@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    name: string = "Angular 2 on Express";
+    name: string = "Multisweeper";
 
     constructor() {}
 }

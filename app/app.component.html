@@ -1,6 +1,8 @@
+<h1>Welcome to {{name}}!</h1>
+<p>Prezentacja routing w Angular 2</p>
+<router-outlet></router-outlet>
 
-    <h1>My First {{name}} app</h1>
-    <router-outlet></router-outlet>
+<a [routerLink]="['/']">Home</a> | <a [routerLink]="['/about/', { id: 2 }]">About</a>
 
-    <a [routerLink]="['/']">Home</a> | <a [routerLink]="['/about/', { id: 2 }]">About</a>
+
 
