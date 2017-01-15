@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
     `,
     styles: [`
     .tile {
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
         text-align: center;
         background-color: gray;
         border: 1px solid white;
