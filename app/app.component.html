@@ -1,8 +1,12 @@
-<h1>Welcome to {{name}}!</h1>
-<p>Prezentacja routing w Angular 2</p>
-<router-outlet></router-outlet>
 
-<a [routerLink]="['/']">Home</a> | <a [routerLink]="['/about/', { id: 2 }]">About</a>
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>Welcome to {{name}}!</h1>
+            <a [routerLink]="['/login']">Login</a> | <a [routerLink]="['/']">Home</a> | <a [routerLink]="['/about/', { id: 2 }]">About</a>
+            <router-outlet></router-outlet>
 
-
+        </div>
+    </div>
+</div>
 
