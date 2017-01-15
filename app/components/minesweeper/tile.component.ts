@@ -11,6 +11,9 @@ import { Component } from '@angular/core';
         height: 25px;
         line-height: 25px;
         text-align: center;
+        background-color: gray;
+        border: 1px solid white;
+        float: left;
     }
 `],
 })

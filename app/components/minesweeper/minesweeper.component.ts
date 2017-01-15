@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RowComponent } from './row.component';
 
 @Component({
     selector: 'minesweper',
@@ -13,7 +14,12 @@ import { Component } from '@angular/core';
         <row></row>
         <row></row>
     </div>
-    `
+    `,
+    styles: [`
+    .board {
+        margin-top: 25px;
+    }
+`],
 })
 export class MinesweeperComponent {
 

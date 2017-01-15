@@ -8,6 +8,9 @@ import { routing } from "./routes";
 import { HomeComponent } from "./components/home/home.component";
 
 import { LoginComponent } from './components/login/login.component';
+import { MinesweeperComponent } from './components/minesweeper/minesweeper.component';
+import { RowComponent } from './components/minesweeper/row.component';
+import { TileComponent } from './components/minesweeper/tile.component';
 
 @NgModule({
     imports: [
@@ -20,7 +23,10 @@ import { LoginComponent } from './components/login/login.component';
         AppComponent,
         AboutComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        MinesweeperComponent,
+        RowComponent,
+        TileComponent
     ],
     bootstrap: [ AppComponent ]
 })
