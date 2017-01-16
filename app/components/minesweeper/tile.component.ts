@@ -15,6 +15,9 @@ import { Component } from '@angular/core';
         border: 1px solid white;
         float: left;
     }
+    .tile:active {
+        background-color: dimgray;
+    }
 `],
 })
 export class TileComponent {
