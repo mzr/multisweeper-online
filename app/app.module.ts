@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 import { AboutComponent } from "./components/about/about.component";
@@ -12,10 +13,16 @@ import { MinesweeperComponent } from './components/minesweeper/minesweeper.compo
 import { RowComponent } from './components/minesweeper/row.component';
 import { TileComponent } from './components/minesweeper/tile.component';
 
+import { ChatComponent } from './components/chat/chat.component';
+import { RoomComponent } from './components/room/room.component';
+
+import { ChatService } from './services/chat.service';
+import { MinesweeperService } from './services/minesweeper.service';
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
+        FormsModule,
         JsonpModule,
         routing
     ],
@@ -26,8 +33,14 @@ import { TileComponent } from './components/minesweeper/tile.component';
         LoginComponent,
         MinesweeperComponent,
         RowComponent,
-        TileComponent
+        TileComponent,
+        ChatComponent,
+        RoomComponent
     ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [ AppComponent ],
+    providers : [
+        ChatService,
+        MinesweeperService
+    ]
 })
 export class AppModule { }

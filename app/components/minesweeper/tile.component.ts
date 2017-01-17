@@ -22,4 +22,6 @@ import { Component } from '@angular/core';
 })
 export class TileComponent {
     threatCount: number = 2;
+
+    
 }
