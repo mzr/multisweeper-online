@@ -14,7 +14,6 @@ export const routes: Route[] = [
     { path: '', pathMatch: 'full', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'game/minesweeper', component: MinesweeperComponent },
     { path: 'waitingroom', component: WaitingroomComponent },
     { path: 'gameroom', component: RoomComponent },
     { path: '**', redirectTo: '' }
