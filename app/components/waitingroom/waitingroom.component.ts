@@ -18,18 +18,17 @@ import { SocketService } from '../../services/socket.service';
             <form class="col-md-8">
                 <h3>Utwórz nowy pokój</h3>
                 <div class="form-group">
-                    
                     <input type="email" class="form-control" id="email" placeholder="szerekość planszy">
                 </div>
                 <div class="form-group">
-                    
                     <input type="password" class="form-control" id="pwd" placeholder="wysokość planszy">
                 </div>
-                <button type="Utwórz pokój" class="btn btn-default">Submit</button>
+                <button type="Utwórz pokój" class="btn btn-default">Graj</button>
             </form>
         </div>
     </div>
-    `
+    `,
+    providers: [ SocketService ]
 })
 export class WaitingroomComponent {
 
