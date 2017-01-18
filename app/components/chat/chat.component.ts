@@ -5,10 +5,14 @@ import { ChatService } from '../../services/chat.service';
 //   moduleId: module.id,
   selector: 'chat',
   templateUrl: 'components/chat/chat.component.html',
+  styles : [`
+    #messages { list-style-type: none; margin: 0; padding: 0; }
+    #messages li { padding: 5px 10px; } 
+    #messages li:nth-child(odd) { background: lightgray; }`]
   providers: [ ChatService ]
 })
 export class ChatComponent implements OnInit, OnDestroy { 
-  messages = [];
+  messages = [{text: 'wiadomosc1'},{text: 'wiadomosc2'},{text: 'wiadomosc3'}];
   connection;
   message;
 
