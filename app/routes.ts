@@ -10,6 +10,7 @@ import { WaitingroomComponent } from './components/waitingroom/waitingroom.compo
 import { RoomComponent } from './components/room/room.component';
 
 
+// zrobić canActivate na routach które wymagają loginu
 export const routes: Route[] = [
     { path: '', pathMatch: 'full', component: HomeComponent },
     { path: 'login', component: LoginComponent },

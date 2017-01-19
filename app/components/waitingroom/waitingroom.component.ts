@@ -18,10 +18,16 @@ import { SocketService } from '../../services/socket.service';
             <form class="col-md-8">
                 <h3>Utwórz nowy pokój</h3>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="email" placeholder="szerekość planszy">
+                    <input type="text" class="form-control" placeholder="Nazwa pokoju">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="pwd" placeholder="wysokość planszy">
+                    <input type="number" class="form-control" placeholder="szerekość planszy">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="wysokość planszy">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="ilość bomb">
                 </div>
                 <button type="Utwórz pokój" class="btn btn-default">Graj</button>
             </form>
@@ -39,6 +45,7 @@ export class WaitingroomComponent {
 
         // rooms = socketService.getRooms();
     }
+
 
 
 }
