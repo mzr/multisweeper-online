@@ -8,7 +8,7 @@ const compression = require('compression');
 // var io = require('./bin/www');
 
 var users = require('./routes/users');
-// var multisweeper = require('./routes/api/multisweeper')(io);
+// var multisweeper = require('./routes/api/ms');
 var app = express();
 
 const options = {

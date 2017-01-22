@@ -7,22 +7,24 @@ import * as io from 'socket.io-client';
 export class SocketService {
     
     public url = 'http://localhost:3000';
-    public socket : any;
+    private socket : any;
 
     connect(){
         this.socket = io(this.url);
         console.log('connected to WS');
     }
 
+    login(username: string){
+        this.socket.emit('login',username);
+    }
 
-   /* getRooms(){
+    getLoginResponse() {
         let observable = new Observable(observer => {
-            this.socket.on('new-room-added', room => {
-                observer.next(room);
+            this.socket.on('login-response', (data) => {
+                observer.next(data);    
             });
-        })
+        })     
         return observable;
-    }*/
-
+    }  
 
 }

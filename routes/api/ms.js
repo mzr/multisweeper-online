@@ -10,14 +10,14 @@
 
 
 // 'use strict';
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+// var router = express.Router();
 // var http = require('http').Server(app);
 // var http = require('../../bin/www').Server(router);
 
 // var io = require('socket.io');
 
-
+module.exports = function(io){
 
 var rooms = {waitingRoom: {players: []} };
 var users = {};
@@ -461,3 +461,4 @@ io.on('connection', socket => {
 
 
 
+}
