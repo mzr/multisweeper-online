@@ -41,7 +41,7 @@ export class WaitingroomComponent {
     // private rooms;
 
     constructor( private socketService : SocketService){
-        socketService.connect();
+        // socketService.connect();
 
         // rooms = socketService.getRooms();
     }
