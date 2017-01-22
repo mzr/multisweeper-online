@@ -19,7 +19,7 @@ import { RoomComponent } from './components/room/room.component';
 import { WaitingroomComponent } from './components/waitingroom/waitingroom.component';
 
 import { ChatService } from './services/chat.service';
-import { MinesweeperService } from './services/minesweeper.service';
+
 import { SocketService } from './services/socket.service';
 
 @NgModule({
@@ -45,7 +45,6 @@ import { SocketService } from './services/socket.service';
     bootstrap: [ AppComponent ],
     providers : [
         ChatService,
-        MinesweeperService,
         SocketService
     ]
 })

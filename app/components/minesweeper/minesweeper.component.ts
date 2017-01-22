@@ -1,6 +1,5 @@
 import { Component,OnInit,OnDestroy } from '@angular/core';
 import { RowComponent } from './row.component';
-import { MinesweeperService } from '../../services/minesweeper.service';
 
 @Component({
     selector: 'minesweeper',
@@ -20,12 +19,11 @@ import { MinesweeperService } from '../../services/minesweeper.service';
     .board {
         margin-top: 25px;
     }
-`],
-    providers: [ MinesweeperService ]
+`]
 })
 export class MinesweeperComponent implements OnInit,OnDestroy {
 
-    constructor(private mineService : MinesweeperService ){
+    constructor(){
 
     }
 
