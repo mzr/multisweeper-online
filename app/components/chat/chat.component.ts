@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ChatService } from '../../services/chat.service';
+import { SocketService } from '../../services/socket.service';
 
 @Component({
 //   moduleId: module.id,
@@ -9,7 +9,7 @@ import { ChatService } from '../../services/chat.service';
     #messages { list-style-type: none; margin: 0; padding: 0; }
     #messages li { padding: 5px 10px; } 
     #messages li:nth-child(odd) { background: lightgray; }`]
-  providers: [ ChatService ]
+  providers: [ SocketService ]
 })
 export class ChatComponent implements OnInit, OnDestroy { 
   messages = [{text: 'wiadomosc1'},{text: 'wiadomosc2'},{text: 'wiadomosc3'}];

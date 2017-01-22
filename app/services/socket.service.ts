@@ -23,9 +23,6 @@ export class SocketService {
             this.socket.on('login-response', (data) => {
                 observer.next(data);    
             });
-            /*return () => {
-                this.socket.disconnect();
-            };  */
         })     
         return observable;
     }  
