@@ -224,7 +224,7 @@ function emitRoomUsersUpdated(roomName) {
 }
 
 io.on('connection', socket => {
-    console.log('user connected');
+    console.log(`user connected with id: ${socket.id}`);
 
 
     socket.on('login', username => {
@@ -236,7 +236,7 @@ io.on('connection', socket => {
         };
 
         emitRoomUsersUpdated('waitingRoom');
-        socket.emit({ok: true});
+        socket.emit('login-response',{ok: true});
         console.log(`user ${username} logged and joined waiting room`);
     });
 

@@ -40,11 +40,11 @@ export class WaitingroomComponent {
 
     // private rooms;
 
-    constructor( private socketService : SocketService){
+   /* constructor( private socketService : SocketService){
         // socketService.connect();
 
         // rooms = socketService.getRooms();
-    }
+    }*/
 
 
 

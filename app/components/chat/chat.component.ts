@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   connection;
   message;
 
-  constructor(private chatService: ChatService){ }
+  /*constructor(private chatService: ChatService){ }
 
   sendMessage(){
     this.chatService.sendMessage(this.message);
@@ -31,6 +31,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.connection.unsubscribe();
-  }
+  }*/
 
 }
