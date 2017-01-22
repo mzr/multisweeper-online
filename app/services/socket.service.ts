@@ -6,7 +6,7 @@ import * as io from 'socket.io-client';
 @Injectable()
 export class SocketService {
     
-    public url = 'http://localhost:3000';
+    public url = 'https://localhost:3000';
     private socket : any;
 
     connect(){
