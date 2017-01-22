@@ -21,6 +21,13 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+/** 
+ * Create Socket.IO everything.
+ * Needs to be moved in to some other module.
+*/
+var io = require('socket.io').listen(server);
+var minesweeper = require('../routes/api/multisweeper')(io);
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -88,3 +95,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+// module.exports = io;
