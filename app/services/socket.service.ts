@@ -12,6 +12,7 @@ export class SocketService implements CanActivate {
     constructor(private router:Router){}
 
     public url = 'https://multisweeper-online.herokuapp.com';
+    
     private socket : any;
     private userName: string;
 
