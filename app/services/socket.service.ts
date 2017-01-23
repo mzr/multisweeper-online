@@ -10,21 +10,20 @@ import { Router } from '@angular/router';
 export class SocketService implements CanActivate {
     
     constructor(private router:Router){}
-
-    public url = 'https://multisweeper-online.herokuapp.com';
-    
+    // public url = 'https://multisweeper-online.herokuapp.com';
     private socket : any;
     private userName: string;
 
     connect(){
         if(!this.socket){
-        this.socket = io(this.url);
-        console.log('connected to WS');
+            this.socket = io('https://multisweeper-online.herokuapp.com');
+            console.log('connected to WS');
         }
     }
 
     login(username: string){
         this.socket.emit('login',username);
+        console.log(username);
         this.userName = username;
     }
 
