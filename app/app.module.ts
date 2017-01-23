@@ -2,11 +2,11 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { Route, RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
 import { AboutComponent } from "./components/about/about.component";
 import { routing } from "./routes";
-import { HomeComponent } from "./components/home/home.component";
 
 import { LoginComponent } from './components/login/login.component';
 import { MinesweeperComponent } from './components/minesweeper/minesweeper.component';
@@ -18,7 +18,9 @@ import { RoomComponent } from './components/room/room.component';
 
 import { WaitingroomComponent } from './components/waitingroom/waitingroom.component';
 
-import { SocketService } from './services/socket.service';
+import { CommonModule } from '@angular/common';
+import { CoreModule } from './core.module'; // creates single instance SocketService
+
 
 @NgModule({
     imports: [
@@ -26,12 +28,13 @@ import { SocketService } from './services/socket.service';
         HttpModule,
         FormsModule,
         JsonpModule,
-        routing
+        routing,
+        CommonModule,
+        CoreModule
     ],
     declarations: [
         AppComponent,
         AboutComponent,
-        HomeComponent,
         LoginComponent,
         MinesweeperComponent,
         RowComponent,
@@ -42,7 +45,7 @@ import { SocketService } from './services/socket.service';
     ],
     bootstrap: [ AppComponent ],
     providers : [
-        SocketService
+        
     ]
 })
 export class AppModule { }

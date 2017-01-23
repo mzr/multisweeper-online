@@ -33,19 +33,12 @@ import { SocketService } from '../../services/socket.service';
             </form>
         </div>
     </div>
-    `,
-    providers: [ SocketService ]
+    `
 })
 export class WaitingroomComponent {
 
-    // private rooms;
 
-   /* constructor( private socketService : SocketService){
-        // socketService.connect();
-
-        // rooms = socketService.getRooms();
-    }*/
-
+ 
 
 
 }
