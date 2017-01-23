@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SocketService } from '../../services/socket.service';
 
+
 // loginService
 
 @Component({
-    templateUrl: 'components/login/login.component.html'
+    templateUrl: 'components/login/login.component.html',
+    providers : []
 })
 export class LoginComponent  {
     private userName : string;
 
-    constructor(private socketService: SocketService) {
-        this.connect(); // za każdym wejściem na komponent login łączy się jeszcze raz - to źle
+    constructor(private socketService: SocketService, private router: Router) {
+        this.connect(); 
     }
 
     connect(){
@@ -21,6 +23,7 @@ export class LoginComponent  {
     login(){
         this.socketService.login(this.userName);
         this.loginResponse();
+        this.router.navigate(['/waitingroom']);
     }
 
     loginResponse(){
