@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
+import { Room } from '../room/room.component';
+import { OnInit } from '@angular/core';
+import { RoomListService } from '../../services/roomlist.service'
+
+
+
 
 @Component({
     selector: 'waitingroom',
@@ -9,11 +15,16 @@ import { SocketService } from '../../services/socket.service';
         <div class="container well">
             <div class="col-md-4">
                 <h3>Lista pokoi</h3>
-                <ul> 
-                    <li>Room 1</li>
-                    <li>Room 2</li>
-                    <li>Room 3</li>
-                </ul>
+                    <table class="rooms">
+                    <tr>
+                        <td> Name </td>
+                        <td> Players </td>
+                    </tr>
+                    <tr *ngFor = "let room of rooms" (click)="onSelect(room)">
+                    <td> {{room.name}} </td>
+                    <td align=center> {{room.players.length}} </td>
+                    </tr>
+                    </table>
             </div>
             <form class="col-md-8">
                 <h3>Utwórz nowy pokój</h3>
@@ -33,12 +44,21 @@ import { SocketService } from '../../services/socket.service';
             </form>
         </div>
     </div>
-    `
+    `,
+    providers: [RoomListService]
 })
+
 export class WaitingroomComponent {
+    rooms : Room[];
 
+    getRoomList(): void {
+        this.roomListSevice.getRoomList().then(rooms => this.rooms = rooms);
+    }
 
- 
+    ngOnInit(): void {
+        this.getRoomList();
+    }
 
-
+    constructor(private roomListSevice: RoomListService) { }
+    
 }
