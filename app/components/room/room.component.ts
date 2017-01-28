@@ -1,5 +1,15 @@
 import { Component,OnInit,OnDestroy } from '@angular/core';
 
+
+export class Room {
+    id: number;
+    name: string;
+    players: Player[];
+}
+export class Player {
+    name: string;
+}
+
 @Component({
     selector: 'room',
     template: `

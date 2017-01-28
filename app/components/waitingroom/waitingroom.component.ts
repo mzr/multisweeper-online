@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
+import { Room } from '../room/room.component';
+
+
 
 @Component({
     selector: 'waitingroom',
@@ -9,11 +12,16 @@ import { SocketService } from '../../services/socket.service';
         <div class="container well">
             <div class="col-md-4">
                 <h3>Lista pokoi</h3>
-                <ul> 
-                    <li>Room 1</li>
-                    <li>Room 2</li>
-                    <li>Room 3</li>
-                </ul>
+                    <table class="rooms">
+                    <tr>
+                        <td> Name </td>
+                        <td> Players </td>
+                    </tr>
+                    <tr *ngFor = "let room of rooms" (click)="onSelect(room)">
+                    <td> {{room.name}} </td>
+                    <td align=center> {{room.players.length}} </td>
+                    </tr>
+                    </table>
             </div>
             <form class="col-md-8">
                 <h3>Utwórz nowy pokój</h3>
@@ -35,10 +43,7 @@ import { SocketService } from '../../services/socket.service';
     </div>
     `
 })
+
 export class WaitingroomComponent {
-
-
- 
-
-
+    rooms : Room[] = [{id : 1, name : 'room1', players : [{name: "aa"}]}];
 }
