@@ -1,0 +1,36 @@
+<div>
+        <div class="container well">
+        <h2>Poczekalnia</h2>
+            <div class="col-md-4">
+                <h3>Lista pokoi</h3>
+                <ul *ngIf="rooms.length"> 
+                    <li (click)="joinRoom(room)" *ngFor="let room of rooms">{{room.name}} - {{room.players}}/{{room.maxPlayers}} graczy</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Lista graczy</h3>
+                <ul *ngIf="waitingUsers.length">
+                    <li *ngFor="let user of waitingUsers">{{user}}</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Utwórz nowy pokój</h3>
+                <div class="form-group">
+                    <input [(ngModel)]="name" type="text" class="form-control" placeholder="Nazwa pokoju">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="width" type="number" class="form-control" placeholder="szerekość planszy">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="height" type="number" class="form-control" placeholder="wysokość planszy">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="bombs" type="number" class="form-control" placeholder="ilość bomb">
+                </div>
+                <div class="form-group">
+                    <input (keyup.enter)="createRoom()" [(ngModel)]="players" type="number" class="form-control" placeholder="ilość graczy">
+                </div>
+                <button (click)="createRoom()" type="Utwórz pokój" class="btn btn-default">Graj</button>
+            </div>
+        </div>
+    </div>

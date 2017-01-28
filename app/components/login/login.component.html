@@ -1,0 +1,9 @@
+<div class="container">
+      <div class="form-signin">
+          <h2>Enter your nickname</h2>
+
+        <label class="sr-only">Nickname</label>
+        <input (keyup.enter)="login()" [(ngModel)]="userName" class="form-control" placeholder="Nickname" required autofocus>
+        <button  (click)="login()" class="btn btn-primary btn-block">Go</button>
+      </div>
+</div>
