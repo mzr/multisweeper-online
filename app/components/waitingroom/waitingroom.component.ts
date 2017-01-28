@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
 import { Room } from '../room/room.component';
+import { OnInit } from '@angular/core';
+import { RoomListService } from '../../services/roomlist.service'
+
 
 
 
@@ -41,9 +44,21 @@ import { Room } from '../room/room.component';
             </form>
         </div>
     </div>
-    `
+    `,
+    providers: [RoomListService]
 })
 
 export class WaitingroomComponent {
-    rooms : Room[] = [{id : 1, name : 'room1', players : [{name: "aa"}]}];
+    rooms : Room[];
+
+    getRoomList(): void {
+        this.roomListSevice.getRoomList().then(rooms => this.rooms = rooms);
+    }
+
+    ngOnInit(): void {
+        this.getRoomList();
+    }
+
+    constructor(private roomListSevice: RoomListService) { }
+    
 }
