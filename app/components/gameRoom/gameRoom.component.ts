@@ -19,7 +19,7 @@ import { ActivatedRoute,Router,Params } from '@angular/router';
             </div>
             <chat></chat>
             <nav>
-                <button class="btn btn-default">Opuść pokój</button>
+                <button (click)="leaveRoom()" class="btn btn-default">Opuść pokój</button>
             </nav>
         </div>
     </div>
@@ -31,7 +31,7 @@ export class GameRoomComponent implements OnInit{
     players = [];
     roomName;
 
-    constructor(private socketService: SocketService,private route: ActivatedRoute,) { }
+    constructor(private socketService: SocketService,private router: Router,private route: ActivatedRoute) { }
 
     ngOnInit(){
         this.roomName = this.route.params._value.name;
@@ -54,6 +54,11 @@ export class GameRoomComponent implements OnInit{
             this.maxPlayers = data.maxPlayers;
             this.board = data.board;
         })
+    }
+
+    leaveRoom(){
+        this.socketService.leaveRoom();
+        this.router.navigate(['/waitingroom']);
     }
 
 }

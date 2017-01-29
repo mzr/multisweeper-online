@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class SocketService implements CanActivate {
     
     constructor(private router:Router){}
-    // public url = 'http://localhost:3000';
+    public url = 'http://localhost:3000';
     private socket : any;
     private userName: string;
 
@@ -104,5 +104,11 @@ export class SocketService implements CanActivate {
         })
         return observable;
     }
+
+    leaveRoom(){
+        this.socket.emit('leave');
+    }
+
+
 
 }

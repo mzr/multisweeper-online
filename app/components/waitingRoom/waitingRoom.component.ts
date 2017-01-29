@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'waitingRoom',
-    templateUrl: 'components/waitingRoom/waitingRoom.component.html'
+    templateUrl: 'components/waitingRoom/waitingRoom.component.html',
+    styles: ['.rooms > li:hover{background: gray;}']
 })
 export class WaitingRoomComponent implements OnInit {
     waitingUsers = [];

@@ -3,14 +3,14 @@
         <h2>Poczekalnia</h2>
             <div class="col-md-4">
                 <h3>Lista pokoi</h3>
-                <ul *ngIf="rooms.length"> 
-                    <li (click)="joinRoom(room)" *ngFor="let room of rooms">{{room.name}} - {{room.players}}/{{room.maxPlayers}} graczy</li>
+                <ul class="list-group rooms" *ngIf="rooms.length"> 
+                    <li class="list-group-item" (click)="joinRoom(room)" *ngFor="let room of rooms">{{room.name}}<span class="badge">{{room.players}}/{{room.maxPlayers}} graczy</span></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <h3>Lista graczy</h3>
-                <ul *ngIf="waitingUsers.length">
-                    <li *ngFor="let user of waitingUsers">{{user}}</li>
+                <ul class="list-group" *ngIf="waitingUsers.length">
+                    <li class="list-group-item" *ngFor="let user of waitingUsers">{{user}}</li>
                 </ul>
             </div>
             <div class="col-md-4">
