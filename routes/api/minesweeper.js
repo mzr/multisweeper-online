@@ -266,7 +266,7 @@ io.on('connection', socket => {
                                              config.height,
                                              config.bombs) };
 
-        var index = rooms['waitingRoom'].players.indexOf(users[socket.id]); //index of user in player list
+        var index = rooms['waitingRoom'].players.indexOf(socket.id); //index of user in player list
         rooms['waitingRoom'].players.splice(index, 1); //remove player from Array
         socket.leave('waitingRoom');
         socket.join(config.name);
@@ -290,11 +290,11 @@ io.on('connection', socket => {
             response.rooms.push({name: room,
             players: rooms[room].players.length, 
             maxPlayers: rooms[room].maxPlayers});
-            console.log(room);
         };
 
        socket.emit("list-rooms-response", response);
-       console.log("rooms listed");
+       console.log("rooms listed by " + users[socket.id].name);
+       console.log("Server response:" + JSON.stringify(response));
     });
 
 
@@ -315,6 +315,9 @@ io.on('connection', socket => {
         }
 
         socket.leave('waitingRoom');
+        var index = rooms['waitingRoom'].players.indexOf(socket.id); //index of user in player list
+        rooms['waitingRoom'].players.splice(index, 1); //remove player from Array
+
         socket.join(roomName);
         users[socket.id].room = roomName;
         rooms[roomName].players.push(socket.id);
@@ -341,7 +344,7 @@ io.on('connection', socket => {
         }
 
         var roomName = users[socket.id].room;
-        var index = rooms[roomName].players.indexOf(users[socket.id]); //index of user in player list
+        var index = rooms[roomName].players.indexOf(socket.id); //index of user in player list
         rooms[roomName].players.splice(index, 1); //remove player from Array
         socket.leave(roomName);
         socket.join('waitingRoom');
@@ -444,7 +447,7 @@ io.on('connection', socket => {
             return;
         
         var roomName = users[socket.id].room;
-        var index = rooms[roomName].players.indexOf(users[socket.id].name); //index of user in player list
+        var index = rooms[roomName].players.indexOf(socket.id); //index of user in player list
         rooms[roomName].players.splice(index, 1); //remove player from Array
         socket.leave(roomName);
         
