@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,OnDestroy } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: 'components/waitingRoom/waitingRoom.component.html',
     styles: ['.rooms > li:hover{background: gray;}']
 })
-export class WaitingRoomComponent implements OnInit {
+export class WaitingRoomComponent implements OnInit, OnDestroy {
     waitingUsers = [];
     rooms = [];
 
@@ -18,13 +18,18 @@ export class WaitingRoomComponent implements OnInit {
     players: number;
 
 
-    constructor( private socketService: SocketService, private router: Router) { }
+    constructor( private socketService: SocketService, private router: Router) {
+     }
 
     ngOnInit(){
         this.getRoomUsersUpdated();
         this.getListRooms();
         this.getRoomsUpdated();
 
+        this.listRooms();  
+    }
+
+    listRooms(){
         this.socketService.listRooms();
     }
 
@@ -48,22 +53,33 @@ export class WaitingRoomComponent implements OnInit {
 
     getRoomsUpdated(){
         this.socketService.getRoomsUpdated().subscribe(data => {
+            console.log('getRoomsUpdated C ' + JSON.stringify(data));
+            // data.rooms.splice(0,1);
+            console.log('getRoomsUpdated C ' + JSON.stringify(data));
             this.rooms = data.rooms;
-            this.rooms.splice(0,1);
+            // this.rooms.splice(0,1);
         })
     }
 
     getListRooms(){
         this.socketService.getListRooms().subscribe(data =>{
+            console.log('getListRooms C ' + JSON.stringify(data));
+            // data.rooms.splice(0,1);
+            console.log('getListRooms C ' + JSON.stringify(data));
+            // this.rooms = data.rooms;
             this.rooms = data.rooms;
-            this.rooms.splice(0,1);
+            // this.rooms.splice(0,1);
         })
     }
 
     joinRoom(room){
-        // console.log('joining room');
+        console.log('joining room');
         this.socketService.joinRoom(room.name);
         this.router.navigate(['/gameroom',room.name]);
+    }
+
+    ngOnDestroy(){
+        this.rooms = [];
     }
     
 

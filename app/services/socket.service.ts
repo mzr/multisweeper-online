@@ -42,9 +42,7 @@ export class SocketService implements CanActivate {
         let observable = new Observable(observer => {
             this.socket.on('login-response', (data) => {
                 observer.next(data);
-                console.log('getLoginResponse:');
-                console.log(data);
-                console.log("-----"); 
+                console.log('getLoginResponse: ' + JSON.stringify(data)); 
             });
         })     
         return observable;
@@ -54,9 +52,7 @@ export class SocketService implements CanActivate {
        let observable = new Observable(observer => {
             this.socket.on('room-users-updated', data => {
                 observer.next(data);
-                console.log('getRoomUsersUpdated:');
-                console.log(data);
-                console.log("-----");
+                console.log('getRoomUsersUpdated: ' + JSON.stringify(data));
             });
         })
         return observable; 
@@ -71,9 +67,7 @@ export class SocketService implements CanActivate {
         let observable = new Observable(observer => {
             this.socket.on('rooms-updated', data => {
                 observer.next(data);
-                console.log('getRoomsUpdated:');
-                console.log(data);
-                console.log("-----");
+                console.log('getRoomsUpdated: ' + JSON.stringify(data));
             });
         })
         return observable; 
@@ -83,9 +77,7 @@ export class SocketService implements CanActivate {
         let observable = new Observable(observer => {
             this.socket.on('create-response', data => {
                 observer.next(data);
-                console.log('getCreateResponse:');
-                console.log(data);
-                console.log("-----");
+                console.log('getCreateResponse: ' + JSON.stringify(data));
             });
         })
         return observable;
@@ -94,15 +86,14 @@ export class SocketService implements CanActivate {
 
     listRooms(){
         this.socket.emit('list-rooms');
+        console.log('list rooms emited');
     }
 
     getListRooms(){
        let observable = new Observable(observer => {
             this.socket.on('list-rooms-response', data => {
                 observer.next(data);
-                console.log('getListRooms:');
-                console.log(data);
-                console.log("-----");
+                console.log('getListRooms: ' + JSON.stringify(data));
             });
         })
         return observable; 
@@ -117,9 +108,7 @@ export class SocketService implements CanActivate {
         let observable = new Observable(observer => {
             this.socket.on('join-response', data => {
                 observer.next(data);
-                console.log('getJoinResponse:');
-                console.log(data);
-                console.log("-----");
+                console.log('getJoinResponse: ' + JSON.stringify(data));
             });
         })
         return observable;
