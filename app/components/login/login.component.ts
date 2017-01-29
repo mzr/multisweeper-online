@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
     getLoginResponse(){
         this.socketService.getLoginResponse().subscribe(data => {
-            console.log('login response object:'); // data to obiekt {ok: true / false}
-            console.log(data);
+            // console.log('login response object:'); // data to obiekt {ok: true / false}
+            // console.log(data);
         })
     }
 

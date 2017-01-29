@@ -4,26 +4,7 @@ import { ActivatedRoute,Router,Params } from '@angular/router';
 
 @Component({
     selector: 'room',
-    template: `
-    <div class="container well">
-        <div class="com-md-12"><h2>Room {{roomName}}</h2></div>
-        <div class="col-md-6">
-            <minesweeper></minesweeper>
-        </div>
-        <div class="col-md-6">
-            <div>
-                <h4>Lista graczy</h4>
-                <ul>
-                    <li *ngFor="let player of players">{{player.name}}</li>
-                </ul>
-            </div>
-            <chat></chat>
-            <nav>
-                <button (click)="leaveRoom()" class="btn btn-default">Opuść pokój</button>
-            </nav>
-        </div>
-    </div>
-    `
+    templateUrl: 'components/gameRoom/gameRoom.component.html'
 })
 export class GameRoomComponent implements OnInit{
     board;
@@ -31,12 +12,15 @@ export class GameRoomComponent implements OnInit{
     players = [];
     roomName;
 
+    //players to raz lista obiektow a raz lista stringow
+
     constructor(private socketService: SocketService,private router: Router,private route: ActivatedRoute) { }
 
     ngOnInit(){
         this.roomName = this.route.params._value.name;
         this.getJoinResponse();
         this.getCreateResponse();
+        this.getRoomUsersUpdated();
     }
 
     getCreateResponse(){
@@ -49,10 +33,16 @@ export class GameRoomComponent implements OnInit{
 
     getJoinResponse(){
         this.socketService.getJoinResponse().subscribe(data =>{
-            console.log(data);
+            // console.log(data);
             this.players = data.players;
             this.maxPlayers = data.maxPlayers;
             this.board = data.board;
+        })
+    }
+
+    getRoomUsersUpdated(){
+        this.socketService.getRoomUsersUpdated().subscribe(data =>{
+            this.players = data.users;
         })
     }
 

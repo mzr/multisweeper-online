@@ -22,16 +22,14 @@ export class WaitingRoomComponent implements OnInit {
 
     ngOnInit(){
         this.getRoomUsersUpdated();
-        this.getRoomsUpdated();
         this.getListRooms();
+        this.getRoomsUpdated();
 
         this.socketService.listRooms();
     }
 
     getRoomUsersUpdated(){
         this.socketService.getRoomUsersUpdated().subscribe(data => {
-            console.log('users changed:');
-            console.log(data.users);
             this.waitingUsers = data.users;
         })
     }   
@@ -52,7 +50,6 @@ export class WaitingRoomComponent implements OnInit {
         this.socketService.getRoomsUpdated().subscribe(data => {
             this.rooms = data.rooms;
             this.rooms.splice(0,1);
-            console.log(this.rooms);
         })
     }
 
@@ -60,12 +57,11 @@ export class WaitingRoomComponent implements OnInit {
         this.socketService.getListRooms().subscribe(data =>{
             this.rooms = data.rooms;
             this.rooms.splice(0,1);
-            console.log(this.rooms);
         })
     }
 
     joinRoom(room){
-        console.log('joining room '+ room.name);
+        // console.log('joining room');
         this.socketService.joinRoom(room.name);
         this.router.navigate(['/gameroom',room.name]);
     }
