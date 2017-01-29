@@ -451,7 +451,7 @@ io.on('connection', socket => {
         rooms[roomName].players.splice(index, 1); //remove player from Array
         socket.leave(roomName);
         
-        if (rooms[roomName].players.length == 0) {
+        if (roomName != 'waitingRoom' && rooms[roomName].players.length == 0) {
             delete rooms[roomName];
             emitRoomsUpdated();
         }
