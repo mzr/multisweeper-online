@@ -452,7 +452,7 @@ io.on('connection', socket => {
         socket.leave(roomName);
         
         if (rooms[roomName].players.length == 0) {
-            delete rooms.roomName;
+            delete rooms[roomName];
             emitRoomsUpdated();
         }
         else 
