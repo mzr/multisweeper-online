@@ -118,6 +118,19 @@ export class SocketService implements CanActivate {
         this.socket.emit('leave');
     }
 
+    sendMessage(message){
+        console.log('emited message: ' + message);
+        this.socket.emit('add-message',message);
+    }
 
+    getMessages(){
+        let observable = new Observable(observer =>{
+            this.socket.on('message',data =>{
+                observer.next(data);
+                console.log('got message '+ JSON.stringify(data));
+            })
+        })
+        return observable;
+    }
 
 }

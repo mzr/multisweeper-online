@@ -51,4 +51,5 @@ export class GameRoomComponent implements OnInit{
         this.router.navigate(['/waitingroom']);
     }
 
+
 }

@@ -10,10 +10,25 @@ import { SocketService } from '../../services/socket.service';
     #messages li { padding: 5px 10px; } 
     #messages li:nth-child(odd) { background: lightgray; }`]
 })
-export class ChatComponent  { 
+export class ChatComponent implements OnInit { 
   messages = [{text: 'wiadomosc1'},{text: 'wiadomosc2'},{text: 'wiadomosc3'}];
   connection;
   message;
 
 
+  constructor(private socketService : SocketService) { }
+
+  ngOnInit(){
+    this.getMessages();
+  }
+    getMessages(){
+        this.socketService.getMessages().subscribe(message=>{
+            this.messages.push(message);
+        })
+    }
+
+    sendMessage(){
+        this.socketService.sendMessage(this.message);
+        this.message="";
+    }
 }
