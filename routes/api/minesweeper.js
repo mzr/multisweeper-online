@@ -210,10 +210,11 @@ function Game(name, width, height, bombs) {
 function emitRoomsUpdated() {
     var response = {rooms: []};
     for (var room in rooms) {
-        response.rooms.push({name: room,
-        players: rooms[room].players.length, 
-        maxPlayers: rooms[room].maxPlayers});
-    };
+        if(room != 'waitingRoom')
+            response.rooms.push({name: room,
+                                 players: rooms[room].players.length, 
+                                 maxPlayers: rooms[room].maxPlayers});
+    }
     io.to('waitingRoom').emit('rooms-updated', response);
 }
 
@@ -275,7 +276,7 @@ io.on('connection', socket => {
         socket.emit("create-response", {
             ok: true, 
             board: rooms[config.name].game.getBoard(),
-            players: [users[socket.id]],
+            players: [users[socket.id].name],
             maxPlayers: config.maxPlayers});
             
         emitRoomsUpdated();
@@ -287,11 +288,12 @@ io.on('connection', socket => {
     socket.on('list-rooms', function() {
         var response = {ok: true, rooms: []};
         for (var room in rooms) {
-            response.rooms.push({name: room,
-            players: rooms[room].players.length, 
-            maxPlayers: rooms[room].maxPlayers});
-        };
-
+            if(room != 'waitingRoom')
+                response.rooms.push({
+                    name: room,
+                    players: rooms[room].players.length, 
+                    maxPlayers: rooms[room].maxPlayers});
+        }
        socket.emit("list-rooms-response", response);
        console.log("rooms listed by " + users[socket.id].name);
        console.log("Server response:" + JSON.stringify(response));
@@ -312,6 +314,12 @@ io.on('connection', socket => {
                 {ok: false,
                  msg: `There is no room called ${roomName}`});
             return;
+        }
+
+        if(rooms[roomName].maxPlayers == rooms[roomName].players.length) {
+            socket.emit('join-response',
+                        { ok: false,
+                          msg: `Room ${roomName} is full`});
         }
 
         socket.leave('waitingRoom');
