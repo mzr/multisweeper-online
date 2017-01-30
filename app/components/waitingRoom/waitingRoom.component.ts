@@ -73,9 +73,11 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
     }
 
     joinRoom(room){
-        console.log('joining room');
-        this.socketService.joinRoom(room.name);
-        this.router.navigate(['/gameroom',room.name]);
+        if(room.maxPlayers - room.players >= 1 ){
+            console.log('joining room');
+            this.socketService.joinRoom(room.name);
+            this.router.navigate(['/gameroom',room.name]);
+        }
     }
 
     ngOnDestroy(){

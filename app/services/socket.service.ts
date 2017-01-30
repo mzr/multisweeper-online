@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 export class SocketService implements CanActivate {
     
     constructor(private router:Router){}
-    private url = 'http://localhost:3000';
-    // private url = 'https://multisweeper-online.herokuapp.com';
     private socket : any;
     private userName: string;
 
@@ -25,8 +23,9 @@ export class SocketService implements CanActivate {
 
     connect(){
         if(!this.socket){
-            this.socket = io(this.url);
-            console.log('connected to WS | '+ this.url);
+            console.log('s');
+            this.socket = io('https://multisweeper-online.herokuapp.com');
+            console.log('connected to WS | '+ 'https://multisweeper-online.herokuapp.com');
         }
     }
 

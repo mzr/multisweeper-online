@@ -9,8 +9,8 @@ import { SocketService } from './services/socket.service';
 const appRoutes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
     { path: 'login', component: LoginComponent },
-    { path: 'gameroom/:name', component: GameRoomComponent, /*canActivate:[SocketService]*/ },
-    { path: 'waitingroom', component: WaitingRoomComponent, /*canActivate:[SocketService]*/ },
+    { path: 'gameroom/:name', component: GameRoomComponent, canActivate:[SocketService] },
+    { path: 'waitingroom', component: WaitingRoomComponent, canActivate:[SocketService] },
     { path: '**', redirectTo: '' }
 ];
 
