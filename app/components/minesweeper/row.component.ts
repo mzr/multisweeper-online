@@ -1,18 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
 import { TileComponent } from './tile.component';
 
 @Component({
     selector: 'row',
     template: `
     <div class="row">
-        <tile></tile>
-        <tile></tile>
-        <tile></tile>
-        <tile></tile>
-        <tile></tile>
-        <tile></tile>
-        <tile></tile>
-        <tile></tile>
+        <tile *ngFor="let tile of tiles"></tile>
     </div>
     `,
     styles: [`
@@ -21,6 +14,14 @@ import { TileComponent } from './tile.component';
     }
 `],
 })
-export class RowComponent {
-    
+export class RowComponent implements OnInit {
+    @Input() tiles;
+
+    constructor(){
+
+    }
+
+    ngOnInit(){
+        // console.log(this.tiles);
+    }
 }

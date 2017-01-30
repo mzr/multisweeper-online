@@ -1,18 +1,12 @@
-import { Component,OnInit,OnDestroy } from '@angular/core';
+import { Component,OnInit,OnDestroy,Input } from '@angular/core';
 import { RowComponent } from './row.component';
+import { SocketService } from '../../services/socket.service';
 
 @Component({
     selector: 'minesweeper',
     template: `
     <div class="board">
-        <row></row>
-        <row></row>
-        <row></row>
-        <row></row>
-        <row></row>
-        <row></row>
-        <row></row>
-        <row></row>
+        <row *ngFor="let row of gameBoard" [tiles]="row"></row>
     </div>
     `,
     styles: [`
@@ -23,12 +17,12 @@ import { RowComponent } from './row.component';
 })
 export class MinesweeperComponent implements OnInit,OnDestroy {
 
-    constructor(){
+    @Input() gameBoard; //dwu-wymiarowa tablica.
 
-    }
+    constructor(private socketSerice : SocketService) {}
 
     ngOnInit(){
-
+        // console.log(JSON.stringify(this.gameBoard));
     }
 
     ngOnDestroy(){

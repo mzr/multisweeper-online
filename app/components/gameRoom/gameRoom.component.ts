@@ -7,7 +7,7 @@ import { ActivatedRoute,Router,Params } from '@angular/router';
     templateUrl: 'components/gameRoom/gameRoom.component.html'
 })
 export class GameRoomComponent implements OnInit{
-    board;
+    board = [[-1,-1],[-1,-1]];
     maxPlayers;
     players = [];
     roomName;

@@ -216,6 +216,7 @@ function emitRoomsUpdated() {
                                  maxPlayers: rooms[room].maxPlayers});
     }
     io.to('waitingRoom').emit('rooms-updated', response);
+    console.log('emited roomsUpdated '+ JSON.stringify(response));
 }
 
 function emitRoomUsersUpdated(roomName) {
