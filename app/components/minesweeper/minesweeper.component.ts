@@ -22,7 +22,7 @@ export class MinesweeperComponent implements OnInit,OnDestroy {
     constructor(private socketSerice : SocketService) {}
 
     ngOnInit(){
-        // console.log(JSON.stringify(this.gameBoard));
+        console.log(JSON.stringify(this.gameBoard));
     }
 
     ngOnDestroy(){
