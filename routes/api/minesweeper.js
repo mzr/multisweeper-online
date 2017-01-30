@@ -365,13 +365,11 @@ io.on('connection', socket => {
         });
 
         emitRoomUsersUpdated('waitingRoom');
-
-        if (!rooms[roomName].players.length) {;
+        if (!rooms[roomName].players.length)
             delete rooms[roomName];
-            emitRoomsUpdated();
-        }
         else 
             emitRoomUsersUpdated(roomName);
+        emitRoomsUpdated();
     });
 
 
@@ -460,13 +458,19 @@ io.on('connection', socket => {
         rooms[roomName].players.splice(index, 1); //remove player from Array
         socket.leave(roomName);
         
-        if (roomName != 'waitingRoom' && rooms[roomName].players.length == 0) {
+        if (roomName != 'waitingRoom' && rooms[roomName].players.length == 0)
             delete rooms[roomName];
-            emitRoomsUpdated();
-        }
         else 
             emitRoomUsersUpdated(roomName);
+        emitRoomsUpdated();
     });
+
+    socket.on('add-message', msg => {
+        if(!users[socket.id])
+            return; //check if user is logged
+        console.log('received message ' + msg);
+        io.to(users[socket.id].room).emit('message',{type:'new-message',text:msg});
+    })
 });
 
 }
