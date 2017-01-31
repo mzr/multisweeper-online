@@ -23,9 +23,7 @@ export class SocketService implements CanActivate {
 
     connect(){
         if(!this.socket){
-            console.log('s');
-            console.log('s');
-            this.socket = io('https://multisweeper-online.herokuapp.com');
+            this.socket = io('http://multisweeper-online.herokuapp.com');
         }
     }
 
@@ -33,7 +31,7 @@ export class SocketService implements CanActivate {
         if(!this.userName){
             this.socket.emit('login',username);
             this.userName = username;
-            // console.log(`logged with username ${this.userName}`);
+            console.log(`logged with username ${this.userName}`);
         }  
     }
 

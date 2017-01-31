@@ -16,19 +16,19 @@
             <div class="col-md-4">
                 <h3>Utwórz nowy pokój</h3>
                 <div class="form-group">
-                    <input [(ngModel)]="name" type="text" class="form-control" placeholder="Nazwa pokoju">
+                    <input (keyup.enter)="createRoom()" [(ngModel)]="name" type="text" class="form-control" placeholder="Nazwa pokoju">
                 </div>
                 <div class="form-group">
-                    <input [(ngModel)]="width" type="number" class="form-control" placeholder="szerekość planszy">
+                    <input (keyup.enter)="createRoom()" [(ngModel)]="width" min="2" max="10" step="1" type="number" class="form-control" placeholder="szerekość planszy">
                 </div>
                 <div class="form-group">
-                    <input [(ngModel)]="height" type="number" class="form-control" placeholder="wysokość planszy">
+                    <input (keyup.enter)="createRoom()" [(ngModel)]="height" min="2" max="10" step="1" type="number" class="form-control" placeholder="wysokość planszy">
                 </div>
                 <div class="form-group">
-                    <input [(ngModel)]="bombs" type="number" class="form-control" placeholder="ilość bomb">
+                    <input (keyup.enter)="createRoom()" [(ngModel)]="bombs" min="0" max="99" step="1" type="number" class="form-control" placeholder="ilość bomb">
                 </div>
                 <div class="form-group">
-                    <input (keyup.enter)="createRoom()" [(ngModel)]="players" type="number" class="form-control" placeholder="ilość graczy">
+                    <input (keyup.enter)="createRoom()" [(ngModel)]="players" min="1" max="10" step="1" type="number" class="form-control" placeholder="ilość graczy">
                 </div>
                 <button (click)="createRoom()" type="Utwórz pokój" class="btn btn-default">Graj</button>
             </div>

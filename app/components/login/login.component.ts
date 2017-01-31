@@ -21,6 +21,11 @@ export class LoginComponent implements OnInit {
     }
 
     login(){
+        if(!this.userName){
+            alert('podaj username');
+            return;
+        }
+
         this.socketService.login(this.userName);     
         this.router.navigate(['/waitingroom']);
     }

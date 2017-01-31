@@ -47,6 +47,12 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
             bombs: this.bombs,
             maxPlayers: this.players
         }
+        if( !this.name || ! this.height || !this.width || !this.players || !this.bombs) { alert('ustaw wszystkie pola'); return; }
+        if(this.height <2 || this.height > 10 ){ alert('wysokość musi być >= 2 i <=10'); return; }
+        if(this.width < 2 || this.width > 10 ){ alert('szerokosc musi byc >= 2 i <=10'); return; }
+        if(this.players<1 || this.players > 10 ){ alert('ilosc graczy musi byc >= 1 i <=10'); return; }
+        if(this.bombs < 1 || this.bombs > 99 ){ alert('bomby >= 1 i <= 99'); return; }
+        
         this.socketService.createRoom(settings);
         this.router.navigate(['/gameroom',this.name]);
     }
@@ -54,21 +60,14 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
     getRoomsUpdated(){
         this.socketService.getRoomsUpdated().subscribe(data => {
             console.log('getRoomsUpdated C ' + JSON.stringify(data));
-            // data.rooms.splice(0,1);
-            console.log('getRoomsUpdated C ' + JSON.stringify(data));
             this.rooms = data.rooms;
-            // this.rooms.splice(0,1);
         })
     }
 
     getListRooms(){
         this.socketService.getListRooms().subscribe(data =>{
             console.log('getListRooms C ' + JSON.stringify(data));
-            // data.rooms.splice(0,1);
-            console.log('getListRooms C ' + JSON.stringify(data));
-            // this.rooms = data.rooms;
             this.rooms = data.rooms;
-            // this.rooms.splice(0,1);
         })
     }
 
