@@ -23,7 +23,8 @@ export class SocketService implements CanActivate {
 
     connect(){
         if(!this.socket){
-            this.socket = io('http://multisweeper-online.herokuapp.com');
+            console.log('');
+            this.socket = io('https://multisweeper-online.herokuapp.com');
         }
     }
 
