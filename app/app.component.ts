@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
+<<<<<<< HEAD
     template: `
     <nav class="navbar navbar-inverse ">
         <div class="container">
@@ -22,6 +24,15 @@ import { Component } from '@angular/core';
     styles: [`nav{text-align: center; margin-bottom:30px;}`]
 })
 export class AppComponent {
+=======
+    templateUrl: 'app.component.html'
+})
+export class AppComponent {
+    name: string = "Multisweeper";
+>>>>>>> master
 
     constructor() {}
 }
+
+
+

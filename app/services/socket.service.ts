@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class SocketService implements CanActivate {
     
     constructor(private router:Router){}
+<<<<<<< HEAD
     private socket : any;
     private userName: string;
 
@@ -26,20 +27,37 @@ export class SocketService implements CanActivate {
             console.log('s');
             console.log('s');
             this.socket = io('https://multisweeper-online.herokuapp.com');
+=======
+    // public url = 'https://multisweeper-online.herokuapp.com';
+    private socket : any;
+    private userName: string;
+
+    connect(){
+        if(!this.socket){
+            this.socket = io('https://multisweeper-online.herokuapp.com');
+            console.log('connected to WS');
+>>>>>>> master
         }
     }
 
     login(username: string){
+<<<<<<< HEAD
         if(!this.userName){
             this.socket.emit('login',username);
             this.userName = username;
             console.log(`logged with username ${this.userName}`);
         }  
+=======
+        this.socket.emit('login',username);
+        console.log(username);
+        this.userName = username;
+>>>>>>> master
     }
 
     getLoginResponse() {
         let observable = new Observable(observer => {
             this.socket.on('login-response', (data) => {
+<<<<<<< HEAD
                 observer.next(data);
                 console.log('getLoginResponse: ' + JSON.stringify(data)); 
             });
@@ -131,6 +149,20 @@ export class SocketService implements CanActivate {
             })
         })
         return observable;
+=======
+                observer.next(data);    
+            });
+        })     
+        return observable;
+    }  
+
+    canActivate(route ,state){
+        if(state.url !== '/login' && !this.userName ){
+            this.router.navigate(['/login']);
+            return false;
+        }
+        return true;
+>>>>>>> master
     }
 
 }

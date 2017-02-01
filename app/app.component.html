@@ -1,0 +1,12 @@
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>Welcome to {{name}}!</h1>
+            <a [routerLink]="['/gameroom']">Game room</a> | <a [routerLink]="['/waitingroom']">Waiting room</a> | <a [routerLink]="['/login']">Login</a> | <a [routerLink]="['/about/', { id: 2 }]">About</a>
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+</div>
+

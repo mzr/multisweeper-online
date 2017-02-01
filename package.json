@@ -36,6 +36,10 @@
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
     "socket.io": "^1.7.2",
+<<<<<<< HEAD
+=======
+    "socket.io-client": "^1.7.2",
+>>>>>>> master
     "systemjs-builder": "^0.15.17",
     "typescript": "^2.0.3",
     "yargs": "^4.7.1",
