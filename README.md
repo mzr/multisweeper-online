@@ -1,3 +1,6 @@
+# Multisweeper
+## Play realtime Minesweeper with friends!
+
 1 . npm install  
 2.1 npm start for developer mode  
 2.2 npm run build:prod build producion version  
