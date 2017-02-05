@@ -1,6 +1,7 @@
 import { Component,OnInit,OnDestroy } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
 import { ActivatedRoute,Router,Params } from '@angular/router';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
     selector: 'room',
@@ -22,7 +23,12 @@ export class GameRoomComponent implements OnInit{
 
     //players to raz lista obiektow a raz lista stringow
 
-    constructor(private socketService: SocketService,private router: Router,private route: ActivatedRoute) { }
+    constructor(
+        private socketService: SocketService,
+        private router: Router,
+        private route: ActivatedRoute, 
+        private location: PlatformLocation) 
+    { }
 
     ngOnInit(){
         this.roomName = this.route.params._value.name;
@@ -30,6 +36,11 @@ export class GameRoomComponent implements OnInit{
         this.getCreateResponse();
         this.getRoomUsersUpdated();
         this.getBoardUpdated();
+
+        this.location.onPopState(() => {
+            this.leaveRoom();
+        })
+// emiting leaveRoom upon going back in browser
     }
 
     getCreateResponse(){
