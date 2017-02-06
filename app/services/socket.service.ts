@@ -25,7 +25,7 @@ export class SocketService implements CanActivate {
             console.log('s');
             console.log('s');
             console.log('s');
-            this.socket = io('https://multisweeper-online.herokuapp.com');
+            this.socket = io('http://localhost:3000/');
         }
     }
 
@@ -123,9 +123,19 @@ export class SocketService implements CanActivate {
         this.socket.emit('add-message',message);
     }
 
-    click (x, y){
+    click(x, y){
         console.log('clicked on '+ x + y);
-        this.socket.emit('click', x, y)
+        this.socket.emit('click', x, y);
+    }
+
+    getBoardUpdated(){
+        let observable = new Observable(observer =>{
+            this.socket.on('board-updated',data =>{
+                observer.next(data);
+                console.log('board updated: '+ JSON.stringify(data));
+            })
+        })
+        return observable;
     }
 
     getMessages(){

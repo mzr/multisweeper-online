@@ -5,7 +5,7 @@ import { TileComponent } from './tile.component';
     selector: 'row',
     template: `
     <div class="row">
-        <tile *ngFor="let tile of tiles; let i = index" [x]="i" [y]="y"></tile>
+        <tile *ngFor="let tile of tiles; let i = index" [x]="i" [y]="y" [val]="rowBoard[i]"></tile>
     </div>
     `,
     styles: [`
@@ -17,6 +17,7 @@ import { TileComponent } from './tile.component';
 export class RowComponent implements OnInit {
     @Input() tiles;
     @Input() y = 1;
+    @Input() rowBoard;
 
     constructor(){
 

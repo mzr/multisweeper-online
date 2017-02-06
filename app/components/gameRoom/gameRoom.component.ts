@@ -21,6 +21,7 @@ export class GameRoomComponent implements OnInit{
         this.getJoinResponse();
         this.getCreateResponse();
         this.getRoomUsersUpdated();
+        this.getBoardUpdated();
     }
 
     getCreateResponse(){
@@ -36,6 +37,13 @@ export class GameRoomComponent implements OnInit{
             // console.log(data);
             this.players = data.players;
             this.maxPlayers = data.maxPlayers;
+            this.board = data.board;
+        })
+    }
+
+   getBoardUpdated(){
+        this.socketService.getBoardUpdated().subscribe(data =>{
+             console.log(data);
             this.board = data.board;
         })
     }

@@ -6,7 +6,7 @@ import { SocketService } from '../../services/socket.service';
     selector: 'minesweeper',
     template: `
     <div class="board">
-        <row *ngFor="let row of gameBoard; let i = index" [tiles]="row" [y]="i"></row>
+        <row *ngFor="let row of gameBoard; let i = index" [tiles]="row" [y]="i" [rowBoard]="gameBoard[i]"></row>
     </div>
     `,
     styles: [`

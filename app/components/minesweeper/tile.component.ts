@@ -4,7 +4,7 @@ import { SocketService } from '../../services/socket.service';
 @Component({
     selector: 'tile',
     template: `
-    <div class="tile" (click)="write()" >{{threatCount}}</div>
+    <div class="tile" (click)="write()" >{{val}}</div>
     `,
     styles: [`
     .tile {
@@ -24,7 +24,7 @@ import { SocketService } from '../../services/socket.service';
 export class TileComponent {
     @Input() x : int = 0;
     @Input() y : int = 0;
-    threatCount: number = 2;
+    @Input() val: int = 0;
     // constructor(x, y){
     //     this.x=x;
     //     this.y=y;
@@ -34,8 +34,8 @@ export class TileComponent {
     write () {
         console.log(this.x);
         console.log(this.y);
-        this.socketService.click( this.x,
-              this.y );
+        this.socketService.click( {i: this.y,
+        j:  this.x} );
     }
     
 }
