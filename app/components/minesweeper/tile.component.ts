@@ -4,8 +4,8 @@ import { SocketService } from '../../services/socket.service';
 @Component({
     selector: 'tile',
     template: `
-    <div [ngClass]="{clicked: (this.val>-1), tile: (this.val==-1), bomb: (this.val==-2)}"
-     (click)="write()" >{{val}}</div>
+    <div [ngClass]="{clicked: (this.val>-1), tile: (this.val==-1), flag: (this.val==-2), bomb: (this.val==-3)}"
+     (click)="onClick()" (contextmenu)="onFlag($event)" >{{val}}</div>
     `,
     styles: [`
     .tile {
@@ -37,6 +37,16 @@ import { SocketService } from '../../services/socket.service';
         border: 1px solid white;
         float: left;
     }
+    .flag {        
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 0;
+        background-color: #0066cc;
+        border: 1px solid white;
+        float: left;
+    }
 
     .tile:active {
         background-color: dimgray;
@@ -54,12 +64,18 @@ export class TileComponent {
     //
     constructor(private socketService: SocketService) { }
 
-    write = function() {
+    onClick() {
         console.log(this.x);
         console.log(this.y);
         this.socketService.click( {i: this.y,
         j:  this.x} );
 //        this.isClicked = true;
+    }
+    onFlag() {
+        console.log("flag!!");
+        this.socketService.flag( {i: this.y,
+        j:  this.x} );
+        return false;
     }
     
 }

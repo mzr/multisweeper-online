@@ -48,7 +48,7 @@ export class GameRoomComponent implements OnInit{
             this.board = data.board;
             this.state = data.state;
             if(data.state == 'lose')
-                this.board[data.loserI][data.loserJ]=-2
+                this.board[data.loserI][data.loserJ]=-3
         })
     }
 

@@ -128,6 +128,11 @@ export class SocketService implements CanActivate {
         this.socket.emit('click', x, y);
     }
 
+    flag(x, y){
+        console.log('clicked on '+ x + y);
+        this.socket.emit('flag', x, y);
+    }
+
     getBoardUpdated(){
         let observable = new Observable(observer =>{
             this.socket.on('board-updated',data =>{
