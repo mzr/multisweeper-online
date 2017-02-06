@@ -10,6 +10,7 @@ export class GameRoomComponent implements OnInit{
     board = [[-1,-1],[-1,-1]];
     maxPlayers;
     players = [];
+    state = 'starting';
     roomName;
 
     //players to raz lista obiektow a raz lista stringow
@@ -45,6 +46,9 @@ export class GameRoomComponent implements OnInit{
         this.socketService.getBoardUpdated().subscribe(data =>{
              console.log(data);
             this.board = data.board;
+            this.state = data.state;
+            if(data.state == 'lose')
+                this.board[data.loserI][data.loserJ]=-2
         })
     }
 
