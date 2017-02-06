@@ -4,7 +4,7 @@ import { SocketService } from '../../services/socket.service';
 @Component({
     selector: 'tile',
     template: `
-    <div class="tile" (click)="write()" >{{val}}</div>
+    <div [ngClass]="{clicked: (this.val!=-1), tile: (this.val==-1)}" (click)="write()" >{{val}}</div>
     `,
     styles: [`
     .tile {
@@ -13,6 +13,15 @@ import { SocketService } from '../../services/socket.service';
         line-height: 30px;
         text-align: center;
         background-color: gray;
+        border: 1px solid white;
+        float: left;
+    }
+    .clicked {        
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: red;
         border: 1px solid white;
         float: left;
     }
