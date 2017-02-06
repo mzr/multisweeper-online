@@ -4,7 +4,14 @@ import { ActivatedRoute,Router,Params } from '@angular/router';
 
 @Component({
     selector: 'room',
-    templateUrl: 'components/gameRoom/gameRoom.component.html'
+    templateUrl: 'components/gameRoom/gameRoom.component.html',
+    styles: 
+    [`.state {
+        text-align: left;
+        font-size: 20px;
+        font-weight: bold;
+        }
+    `]
 })
 export class GameRoomComponent implements OnInit{
     board = [[-1,-1],[-1,-1]];
