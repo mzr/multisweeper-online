@@ -123,6 +123,11 @@ export class SocketService implements CanActivate {
         this.socket.emit('add-message',message);
     }
 
+    click (x, y){
+        console.log('clicked on '+ x + y);
+        this.socket.emit('click', x, y)
+    }
+
     getMessages(){
         let observable = new Observable(observer =>{
             this.socket.on('message',data =>{
