@@ -48,10 +48,10 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
             maxPlayers: this.players
         }
         if( !this.name || ! this.height || !this.width || !this.players || !this.bombs) { alert('ustaw wszystkie pola'); return; }
-        if(this.height <2 || this.height > 10 ){ alert('wysokość musi być >= 2 i <=10'); return; }
-        if(this.width < 2 || this.width > 10 ){ alert('szerokosc musi byc >= 2 i <=10'); return; }
+        if(this.height <2 || this.height > 40 ){ alert('wysokość musi być >= 2 i <=40'); return; }
+        if(this.width < 2 || this.width > 17 ){ alert('szerokosc musi byc >= 2 i <=17'); return; }
         if(this.players<1 || this.players > 10 ){ alert('ilosc graczy musi byc >= 1 i <=10'); return; }
-        if(this.bombs < 1 || this.bombs > 99 ){ alert('bomby >= 1 i <= 99'); return; }
+        if(this.bombs < 1 || this.bombs > 17*17 - 1 ){ alert('bomby >= 1 i <= 399'); return; }
         
         this.socketService.createRoom(settings);
         this.router.navigate(['/gameroom',this.name]);

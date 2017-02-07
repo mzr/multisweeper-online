@@ -1,6 +1,7 @@
-<div>
-        <div class="container well">
+        <div >
+            <div class="container well">
         <h2>Poczekalnia</h2>
+        <div class="row">
             <div class="col-md-4">
                 <h3>Lista pokoi</h3>
                 <ul class="list-group rooms" *ngIf="rooms.length"> 
@@ -31,6 +32,12 @@
                     <input (keyup.enter)="createRoom()" [(ngModel)]="players" min="1" max="10" step="1" type="number" class="form-control" placeholder="ilość graczy">
                 </div>
                 <button (click)="createRoom()" type="Utwórz pokój" class="btn btn-default">Graj</button>
+            </div></div>
+            <div class="row">
+            <chat></chat>
             </div>
         </div>
-    </div>
+
+            
+
+        </div>
