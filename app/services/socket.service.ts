@@ -12,6 +12,7 @@ export class SocketService implements CanActivate {
     constructor(private router:Router){}
     private socket : any;
     private userName: string;
+    private url = 'https://multisweeper-online.herokuapp.com';
 
     canActivate(route ,state){
         if(state.url !== '/login' && !this.userName ){
@@ -20,14 +21,7 @@ export class SocketService implements CanActivate {
         }
         return true;
     }
-    connect(){
-        if(!this.socket){
-            console.log('s');
-            console.log('s');
-            console.log('s');
-            this.socket = io('https://multisweeper-online.herokuapp.com');
-        }
-    }
+    
 
     login(username: string){
         if(!this.userName){
@@ -36,7 +30,12 @@ export class SocketService implements CanActivate {
             console.log(`logged with username ${this.userName}`);
         }  
     }
-
+    connect(){
+        if(!this.socket){
+            this.socket = io(this.url);
+            console.log('connected to ' + this.url);
+        }
+    }
     getLoginResponse() {
         let observable = new Observable(observer => {
             this.socket.on('login-response', (data) => {
