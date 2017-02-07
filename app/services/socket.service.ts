@@ -25,7 +25,7 @@ export class SocketService implements CanActivate {
             console.log('s');
             console.log('s');
             console.log('s');
-            this.socket = io('http://localhost:3000/');
+            this.socket = io('https://multisweeper-online.herokuapp.com');
         }
     }
 
