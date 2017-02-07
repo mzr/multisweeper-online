@@ -5,7 +5,9 @@ import { SocketService } from '../../services/socket.service';
     selector: 'tile',
     template: `
     <div [ngClass]="{tile: (true), clicked: (this.val>-1), flag: (this.val==-2), bomb: (this.val==-3)}"
-     (click)="onClick()" (contextmenu)="onFlag($event)" >{{val}}</div>
+     (click)="onClick()" (contextmenu)="onFlag($event)" >
+     <div *ngIf="val > 0">{{val}}</div>
+     </div>
     `,
     styles: [`
     .tile {
