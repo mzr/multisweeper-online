@@ -123,6 +123,26 @@ export class SocketService implements CanActivate {
         this.socket.emit('add-message',message);
     }
 
+    click(x, y){
+        console.log('clicked on '+ x + y);
+        this.socket.emit('click', x, y);
+    }
+
+    flag(x, y){
+        console.log('clicked on '+ x + y);
+        this.socket.emit('flag', x, y);
+    }
+
+    getBoardUpdated(){
+        let observable = new Observable(observer =>{
+            this.socket.on('board-updated',data =>{
+                observer.next(data);
+                console.log('board updated: '+ JSON.stringify(data));
+            })
+        })
+        return observable;
+    }
+
     getMessages(){
         let observable = new Observable(observer =>{
             this.socket.on('message',data =>{

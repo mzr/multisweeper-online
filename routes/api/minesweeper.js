@@ -401,6 +401,7 @@ io.on('connection', socket => {
 
         console.log('clicked');
         rooms[roomName].game.click(coords.i, coords.j);
+        console.log('sending board-updated');
         io.to(roomName).emit('board-updated', { 
             state: rooms[roomName].game.state,
             loserI: rooms[roomName].game.loserI,
