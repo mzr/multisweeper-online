@@ -36,7 +36,7 @@ export class GameRoomComponent implements OnInit{
         this.getCreateResponse();
         this.getRoomUsersUpdated();
         this.getBoardUpdated();
-
+      
         this.location.onPopState(() => {
             this.leaveRoom();
         })
