@@ -1,7 +1,7 @@
 <div class='well'>
     <ul #scroll *ngIf="messages.length > 0" id="messages">
         <li  *ngFor="let message of messages">
-            {{message.text}}
+            {{message.author}} - {{message.text}}
         </li>
         
     </ul>
