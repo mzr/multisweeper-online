@@ -1,8 +1,9 @@
 <div class='well'>
-    <ul *ngIf="messages.length > 0" id="messages">
-        <li *ngFor="let message of messages">
-            {{message.text}}
+    <ul #scroll *ngIf="messages.length > 0" id="messages">
+        <li  *ngFor="let message of messages">
+            {{message.author}} - {{message.text}}
         </li>
+        
     </ul>
     <input (keyup.enter)="sendMessage()" [(ngModel)]="message" type="text"   />
     <button (click)="sendMessage()" class="btn btn-default">Send</button>

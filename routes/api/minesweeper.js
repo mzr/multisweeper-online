@@ -401,6 +401,7 @@ io.on('connection', socket => {
 
         console.log('clicked');
         rooms[roomName].game.click(coords.i, coords.j);
+        console.log('sending board-updated');
         io.to(roomName).emit('board-updated', { 
             state: rooms[roomName].game.state,
             loserI: rooms[roomName].game.loserI,
@@ -469,7 +470,7 @@ io.on('connection', socket => {
         if(!users[socket.id])
             return; //check if user is logged
         console.log('received message ' + msg);
-        io.to(users[socket.id].room).emit('message',{type:'new-message',text:msg});
+        io.to(users[socket.id].room).emit('message',{type:'new-message',text:msg, author: users[socket.id].name});
     })
 });
 

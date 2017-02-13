@@ -12,6 +12,7 @@ export class SocketService implements CanActivate {
     constructor(private router:Router){}
     private socket : any;
     private userName: string;
+    private url = 'https://multisweeper-online.herokuapp.com';
 
     canActivate(route ,state){
         if(state.url !== '/login' && !this.userName ){
@@ -20,14 +21,7 @@ export class SocketService implements CanActivate {
         }
         return true;
     }
-    connect(){
-        if(!this.socket){
-            console.log('s');
-            console.log('s');
-            console.log('s');
-            this.socket = io('https://multisweeper-online.herokuapp.com');
-        }
-    }
+    
 
     login(username: string){
         if(!this.userName){
@@ -36,7 +30,12 @@ export class SocketService implements CanActivate {
             console.log(`logged with username ${this.userName}`);
         }  
     }
-
+    connect(){
+        if(!this.socket){
+            this.socket = io('https://multisweeper-online.herokuapp.com');
+            console.log('connected to ' + this.url);
+        }
+    }
     getLoginResponse() {
         let observable = new Observable(observer => {
             this.socket.on('login-response', (data) => {
@@ -121,6 +120,26 @@ export class SocketService implements CanActivate {
     sendMessage(message){
         console.log('emited message: ' + message);
         this.socket.emit('add-message',message);
+    }
+
+    click(x, y){
+        console.log('clicked on '+ x + y);
+        this.socket.emit('click', x, y);
+    }
+
+    flag(x, y){
+        console.log('clicked on '+ x + y);
+        this.socket.emit('flag', x, y);
+    }
+
+    getBoardUpdated(){
+        let observable = new Observable(observer =>{
+            this.socket.on('board-updated',data =>{
+                observer.next(data);
+                console.log('board updated: '+ JSON.stringify(data));
+            })
+        })
+        return observable;
     }
 
     getMessages(){
