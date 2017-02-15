@@ -1,7 +1,9 @@
 # Multisweeper
-## Play realtime Minesweeper with friends!
+## A realtime room-based, game server written in NodeJS using Angular2 frontend.
 
-1 . npm install  
-2.1 npm start for developer mode  
-2.2 npm run build:prod build producion version  
-2.3 npm run prod run production version
+Predefined scripts:
+- `npm install` - installing dependencies
+- `npm start` - starting server daemon with developer version
+- `npm run build:prod` - building production version 
+- `npm run prod` - starting server daemon with production version
+
